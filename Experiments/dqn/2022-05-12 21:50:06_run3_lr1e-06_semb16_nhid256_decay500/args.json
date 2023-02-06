@@ -1,0 +1,1 @@
+{"state_size": 1, "n_actions": 6, "M_episodes": 10000, "replay_buffer_size": 100000, "batch_size": 512, "eps_start": 0.9, "eps_end": 0.05, "gamma": 0.999, "EXPLORE": 1000, "TARGET_UPDATE": 1, "hyperglycemic_BG": 150, "hypoglycemic_BG": 100, "learning_rate": 1e-06, "eps_decay": 500, "state_embedding_size": 16, "n_hidden": 256, "seed": 3}

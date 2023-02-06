@@ -1,0 +1,6 @@
+Network: EFFDQN_Diabetes_Real_Net(
+  (action_embedder): Linear(in_features=1, out_features=16, bias=True)
+  (state_embedder): Linear(in_features=1, out_features=16, bias=True)
+  (obs_layer): Linear(in_features=32, out_features=256, bias=True)
+  (obs_layerout): Linear(in_features=256, out_features=6, bias=True)
+)

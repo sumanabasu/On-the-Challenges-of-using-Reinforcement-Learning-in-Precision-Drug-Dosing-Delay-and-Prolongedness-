@@ -1,0 +1,6 @@
+Network: ADRQN_Diabetes(
+  (state_embedder): Linear(in_features=1, out_features=16, bias=True)
+  (action_embedder): Linear(in_features=6, out_features=16, bias=True)
+  (lstm): LSTM(32, 256, batch_first=True)
+  (out_layer): Linear(in_features=256, out_features=6, bias=True)
+)
