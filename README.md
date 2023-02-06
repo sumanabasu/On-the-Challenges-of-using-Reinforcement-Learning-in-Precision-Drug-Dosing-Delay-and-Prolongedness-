@@ -1,6 +1,6 @@
-# AAAI 2023: On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness
+# [AAAI 2023: On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness](https://arxiv-export1.library.cornell.edu/abs/2301.00512v1)
 
-Under Progress!
+Disclaimer: Under Progress!
 
 ## Create and activate virtual environment
 ```
@@ -59,8 +59,6 @@ For beginners, example slurm job array launchers can be found under `paepomdp/di
 	└── MoveBlock			# Everything on the tabular toy environment			
 ├── setup.py            # To install paepomdp
 ```
-## [ArXiv Link](https://arxiv-export1.library.cornell.edu/abs/2301.00512v1)
-
 
 ## Citation
 ```
