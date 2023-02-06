@@ -1,4 +1,4 @@
-# [AAAI 2023: On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness](https://arxiv-export1.library.cornell.edu/abs/2301.00512v1)
+# [AAAI 2023: On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness](https://arxiv.org/abs/2301.00512)
 
 Disclaimer: Under Progress!
 
@@ -21,7 +21,7 @@ git clone git@github.com:sumanabasu/simglucose.git
 cd simglucose
 pip install -e .
 ```
-If you are using `simglucose` please cite the below:
+If you are using `simglucose` please also cite the below:
 1. The original [UVa/Padova Simulator (2008 version)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4454102/) paper
 2. `simglucose` [implemention by _Jinyu Xie_](https://github.com/jxx123/simglucose)
 
@@ -63,11 +63,15 @@ For beginners, example slurm job array launchers can be found under `paepomdp/di
 ```
 
 ## Citation
-```
+If you find our work interesting and use it in your research, please cite:
+
+```bibtex
 @article{basu2023paepomdp,
   title={On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness of Action Effects},
   author={Sumana Basu, Marc-André Legault, Adriana Romero-Soriano, Doina Precup},
   journal={Thirty-Seventh AAAI Conference on Artificial Intelligence},
-  year={2023}
+  year={2023},
+  url={https://arxiv.org/abs/2301.00512},
+  arxiv={2301.00512},
 }
 ```
