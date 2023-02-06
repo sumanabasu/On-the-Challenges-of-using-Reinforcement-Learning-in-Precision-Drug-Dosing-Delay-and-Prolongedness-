@@ -171,7 +171,7 @@ if __name__ == '__main__':
 		'eps_decay': 500,
 		'EXPLORE': 1000,
 		'TARGET_UPDATE': 1,
-		'seed': 1,
+		'seed': 3,
 		'hyperglycemic_BG' : 150,
 		'hypoglycemic_BG' : 100,
 		'n_hidden' : 256,
