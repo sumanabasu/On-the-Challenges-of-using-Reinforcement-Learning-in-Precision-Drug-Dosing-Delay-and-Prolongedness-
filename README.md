@@ -2,6 +2,8 @@
 
 Disclaimer: Under Progress!
 
+Short Video Link: https://youtu.be/YwhvZNyCxX8
+
 ## Create and activate virtual environment
 ```
 conda create -n paepomdp_diabetes python=3.7 anaconda
