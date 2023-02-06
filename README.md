@@ -1,5 +1,6 @@
 # AAAI 2023: On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness
 
+Under Progress!
 
 ## Create and activate virtual environment
 ```
@@ -45,9 +46,9 @@ For beginners, example slurm job array launchers can be found under `paepomdp/di
     ├── Experiments       		# Trained models and results
         └── ...
     ├── paepomdp     
-        └── algos
+        └── algos			# RL agents
 	    └── ...
-	└── diabetes			# experiments on the modified simglucose environment
+	└── diabetes			# everything on the modified simglucose environment
 	    └── helpers
 		└── rewards.py		# contains the zone_reward function introduced in the paper
 		└── utils.py		# utility funcs used by the env
@@ -55,5 +56,18 @@ For beginners, example slurm job array launchers can be found under `paepomdp/di
 		└── ...			# individual trainers can be considered as individual entry points to different models
 	    └── mains
 		└── ...
+	└── MoveBlock			# Everything on the tabular toy environment			
 ├── setup.py            # To install paepomdp
+```
+## [ArXiv Link](https://arxiv-export1.library.cornell.edu/abs/2301.00512v1)
+
+
+## Citation
+```
+@article{basu2023paepomdp,
+  title={On the Challenges of using Reinforcement Learning in Precision Drug Dosing: Delay and Prolongedness of Action Effects},
+  author={Sumana Basu, Marc-André Legault, Adriana Romero-Soriano, Doina Precup},
+  journal={Thirty-Seventh AAAI Conference on Artificial Intelligence},
+  year={2023}
+}
 ```
