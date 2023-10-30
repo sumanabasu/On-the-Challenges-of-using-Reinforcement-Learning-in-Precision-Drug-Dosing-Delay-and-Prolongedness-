@@ -4,14 +4,13 @@ import os
 import json
 import time
 from datetime import datetime
-from prolonged_envs.algos.utils import PostionWrapper
-from prolonged_envs.diabetes.trainers.adrqn_diabetes_trainer import train
-from prolonged_envs.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper
+from paepomdp.diabetes.trainers.adrqn_diabetes_trainer import train
+from paepomdp.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper
 
 
 if __name__ == '__main__':
 	# EXPERIMENTS = "../experiments/"
-	EXPERIMENTS = '/home/mila/b/basus/experiments/diabetes/adrqn/reduced_action/trial4/'
+	EXPERIMENTS = '../../../Experiments/Tune/ADRQN/'
 	# EXPERIMENTS = '/home/mila/b/basus/experiments/diabetes/neurips/adrqn/'
 	
 	if not os.path.exists (EXPERIMENTS):
@@ -23,7 +22,7 @@ if __name__ == '__main__':
 	args = parser.parse_args ()
 	
 	patient_name = 'adult#009'
-	reward = 'zone_reward'  # 'zone_reward'
+	reward = 'zone_reward'
 	seed = 10
 	
 	print ('Patient Name:', patient_name, '\n', 'Reward:', reward)
