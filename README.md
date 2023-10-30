@@ -36,10 +36,16 @@ pip install -e .
 To train an agent for the glucose control task, navigate to the trainers folder `paepomdp/diabetes/trainers` and run the training script for the specific model. \\
 For example, to train the Effective DQN agent with the default hyperparameters, run
 ```
-python effdqn_diabetes_trainer.py
+python effdqn_real_diabetes_trainer.py --patient_name adult#009
 ```
 In the paper, we have reported results over 5 seeds. To run all of them, launch a slurm job array with the codes stored under `paepomdp/diabetes/mains/`.
 For beginners, example slurm job array launchers can be found under `paepomdp/diabetes/launchers/`
+
+The default environment in this paper is for `adult#009`. To change this, launch the code with the argument
+`--patient_name`. Eg.:
+```angular2html
+python adrqn_diabetes_main.py --array_id=$SLURM_ARRAY_TASK_ID --patient_name=child#009
+```
 
 
 ## Directory structure
