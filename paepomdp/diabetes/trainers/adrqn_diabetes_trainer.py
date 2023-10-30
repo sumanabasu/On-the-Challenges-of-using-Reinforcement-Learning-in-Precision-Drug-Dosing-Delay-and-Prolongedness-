@@ -3,14 +3,13 @@ import numpy as np
 import gym
 import torch
 import torch.nn.functional as F
-from itertools import count
+import argparse
 import math
 from collections import defaultdict
-from code.algos.ADRQN import ADRQN, ADRQN_Diabetes, ExpBuffer
+from paepomdp.algos.ADRQN import ADRQN_Diabetes, ExpBuffer
 from datetime import datetime
 import os
-from torch.utils.tensorboard import SummaryWriter
-from code.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper, \
+from paepomdp.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper, \
 	save_learning_metrics
 
 def train(env,
@@ -137,16 +136,13 @@ def train(env,
 	print('Done!')
 	env.close ()
 	
-if __name__ == '__main__':
-	EXPERIMENTS = "../experiments/"
+def run(args):
+	EXPERIMENTS = "../../../Experiments/ADRQN/"
+	print ('Training ADRQN for patient: ', args.patient_name)
 	
-	patient_name = 'adult#009'
-	reward = 'zone_reward'
-	seed = 10
-	
-	env_id = register_single_patient_env (patient_name,
-										  reward_fun=reward,
-										  seed=seed,
+	env_id = register_single_patient_env (args.patient_name,
+										  reward_fun=args.reward,
+										  seed=args.seed,
 										  version='-v0')
 	env = gym.make (env_id)
 	env = DiscretizeActionWrapper (env, low=0, high=5, n_bins=6)
@@ -155,17 +151,17 @@ if __name__ == '__main__':
 			# Fixed
 			'state_size': env.observation_space.shape[ 0 ],
 			'n_actions': env.num_actions,
-			'M_episodes': 1000,
+			'M_episodes': 10000,
 			'replay_buffer_size': 100000,
-			'batch_size': 64,
+			'batch_size': 512,
 			'eps_start': 0.9,
 			'eps_end': 0.05,
 			'gamma': 0.999,
-			'sample_length': 5,
-			'learning_rate': 0.01,
-			'eps_decay'	:	10,
-			'EXPLORE' : 300,
-			'seed': 1,
+			'sample_length': 15,
+			'learning_rate': 0.001,
+			'eps_decay'	:	500,
+			'EXPLORE' : 1000,
+			'seed': args.seed,
 			'hyperglycemic_BG' : 150,
 			'hypoglycemic_BG' : 100,
 			'n_hidden': 256,
@@ -183,3 +179,13 @@ if __name__ == '__main__':
 	print (f"Created {dir_}")
 	
 	train(env, dir_, **kwargs)
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser (description="ADRQN argument parser")
+	parser.add_argument ("--patient_name", type=str, default='adult#009', help="Name of the patient")
+	parser.add_argument ("--reward", type=str, default='zone_reward', help="Reward type (default: zone_reward)")
+	parser.add_argument ("--seed", type=int, default=3, help="Seed value (default: 3)")
+	
+	args = parser.parse_args ()
+	
+	run (args)
