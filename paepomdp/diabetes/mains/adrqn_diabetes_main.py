@@ -9,9 +9,7 @@ from paepomdp.diabetes.helpers.utils import register_single_patient_env, Discret
 
 
 if __name__ == '__main__':
-	# EXPERIMENTS = "../experiments/"
 	EXPERIMENTS = '../../../Experiments/Tune/ADRQN/'
-	# EXPERIMENTS = '/home/mila/b/basus/experiments/diabetes/neurips/adrqn/'
 	
 	if not os.path.exists (EXPERIMENTS):
 		os.makedirs (EXPERIMENTS)
@@ -19,15 +17,16 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser ()
 	parser.add_argument (
 		'--array_id', type=int, default=0, help='(optional) hyperparameter exploration array job id')
+	parser.add_argument ('--patient_name', type=str, default='adult#009', help='Environment on the patient')
 	args = parser.parse_args ()
 	
-	patient_name = 'adult#009'
+	# patient_name = 'adult#009'
 	reward = 'zone_reward'
 	seed = 10
 	
-	print ('Patient Name:', patient_name, '\n', 'Reward:', reward)
+	print ('Patient Name:', args.patient_name, '\n', 'Reward:', reward)
 	
-	env_id = register_single_patient_env (patient_name,
+	env_id = register_single_patient_env (args.patient_name,
 										  reward_fun=reward,
 										  seed=seed,
 										  version='-v0')
@@ -59,16 +58,11 @@ if __name__ == '__main__':
 			'eps_decay'		:	decay,
 			'seed': run + 1
 		}
-		# for run in range (5)
-		# for embd_dim in [16]
-		# for seq_len in [15]
-		# for lr in [0.0005]
-		# for decay in [100]
 		for run in range (5)
 		for aemb in [16]
 		for semb in [16]
 		for n_hid in [ 256 ]
-		for seq_len in [15] #15, 20, 40
+		for seq_len in [5, 10, 15]
 		for lr in [0.001]
 		for decay in [500]
 	]
