@@ -4,14 +4,11 @@ import os
 import json
 import time
 from datetime import datetime
-from prolonged_envs.diabetes.trainers.effdqn_real_diabetes_trainer import train
-from prolonged_envs.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper
+from paepomdp.diabetes.trainers.effdqn_real_diabetes_trainer import train
+from paepomdp.diabetes.helpers.utils import register_single_patient_env, DiscretizeActionWrapper
 
 if __name__ == '__main__':
-	# EXPERIMENTS = "../experiments/"
-	EXPERIMENTS = '/home/mila/b/basus/experiments/aaai/SensitivityAnalysis/effdqn/lambda/'
-	# EXPERIMENTS = '/home/mila/b/basus/experiments/diabetes/effdqn/reduced_action/trial3_real/'
-	# EXPERIMENTS = '/home/mila/b/basus/experiments/diabetes/neurips/effdqn/3/'
+	EXPERIMENTS = '../../../Experiments/Tune/EffDQN/'
 	
 	if not os.path.exists (EXPERIMENTS):
 		os.makedirs (EXPERIMENTS)
@@ -59,12 +56,6 @@ if __name__ == '__main__':
 			'eps_decay': decay,
 			'seed': run + 1
 		}
-		# for run in range (5)
-		# for lr in [0.001, 0.0001, 0.0005]
-		# for lmbd in [ 0.99, 0.9]
-		# for semb in [ 16]
-		# for aemb in [32]
-		# for decay in [100, 500]
 		for run in range (5)
 		for lr in [0.001]
 		for lmbd in [0.95]
