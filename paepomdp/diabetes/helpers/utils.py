@@ -2,7 +2,7 @@ import gym
 import numpy as np
 import sys
 from gym.envs.registration import register
-from prolonged_envs.diabetes.helpers.rewards import zone_reward, magni_reward
+from paepomdp.diabetes.helpers.rewards import zone_reward
 
 def register_single_patient_env (patient_name=None, reward_fun=None, seed=42, version='-v0'):
 	"""
