@@ -9,7 +9,7 @@ from paepomdp.diabetes.helpers.utils import register_single_patient_env, Discret
 
 
 if __name__ == '__main__':
-	EXPERIMENTS = '../../../Experiments/Tune/ADRQN/'
+	EXPERIMENTS = '../../../Experiments/Tune/ADRQN/adol/'
 	
 	if not os.path.exists (EXPERIMENTS):
 		os.makedirs (EXPERIMENTS)
@@ -61,10 +61,10 @@ if __name__ == '__main__':
 		for run in range (5)
 		for aemb in [16]
 		for semb in [16]
-		for n_hid in [ 256 ]
-		for seq_len in [5, 10, 15]
+		for n_hid in [ 256, 512 ]
+		for seq_len in [10]
 		for lr in [0.001]
-		for decay in [500]
+		for decay in [500, 1000]
 	]
 	
 	this_runs_hps = all_hps[args.array_id]
@@ -72,7 +72,8 @@ if __name__ == '__main__':
 	print ('hyper params:', this_runs_hps)
 	
 	# Create experiment dir
-	expt_id = datetime.now ().strftime ('%Y-%m-%d %H:%M:%S') + \
+	expt_id = str(args.patient_name) + '_' + \
+			  datetime.now ().strftime ('%Y-%m-%d %H:%M:%S') + \
 			  '_run'+str(this_runs_hps['seed']) + \
 			  '_semb' + str (this_runs_hps[ 'state_embedding_size']) + \
 			  '_aemb' + str (this_runs_hps[ 'action_embedding_size' ]) + \
