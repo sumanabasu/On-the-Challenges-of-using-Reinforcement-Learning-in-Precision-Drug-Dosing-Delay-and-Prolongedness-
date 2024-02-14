@@ -16,13 +16,16 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser ()
 	parser.add_argument (
 		'--array_id', type=int, default=0, help='(optional) hyperparameter exploration array job id')
+	parser.add_argument ('--patient_name', type=str, default='adult#009', help='Environment on the patient')
 	args = parser.parse_args ()
 	
-	patient_name = 'adult#009'
+	# patient_name = 'adult#009'
 	reward = 'zone_reward'
 	seed = 10
 	
-	env_id = register_single_patient_env (patient_name,
+	print ('Patient Name:', args.patient_name, '\n', 'Reward:', reward)
+	
+	env_id = register_single_patient_env (args.patient_name,
 										  reward_fun=reward,
 										  seed=seed,
 										  version='-v0')
@@ -58,11 +61,11 @@ if __name__ == '__main__':
 		}
 		for run in range (5)
 		for lr in [0.001]
-		for lmbd in [0.95]
+		for lmbd in [0.99, 0.8, 0.7]
 		for semb in [ 16 ]
 		for aemb in [ 16]
 		for n_hid in [256]
-		for decay in [500 ]
+		for decay in [500]
 	]
 	
 	this_runs_hps = all_hps[ args.array_id ]
@@ -70,7 +73,8 @@ if __name__ == '__main__':
 	print ('hyper params:', this_runs_hps)
 	
 	# Create experiment dir
-	expt_id = datetime.now ().strftime ('%Y-%m-%d %H:%M:%S') + \
+	expt_id = str(args.patient_name) + '_' + \
+			  datetime.now ().strftime ('%Y-%m-%d %H:%M:%S') + \
 			  '_run' + str (this_runs_hps[ 'seed' ]) + \
 			  '_lr' + str (this_runs_hps[ 'learning_rate' ]) + \
 			  '_lambda' + str (this_runs_hps[ 'lambdaa' ]) + \
